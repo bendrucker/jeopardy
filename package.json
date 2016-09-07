@@ -1,0 +1,37 @@
+{
+  "name": "jeopardy",
+  "main": "index.js",
+  "bin": {
+    "jeopardy": "cli.js"
+  },
+  "version": "0.0.0",
+  "description": "Wrap any shell command to play the Jeopardy theme while it runs",
+  "license": "MIT",
+  "repository": "bendrucker/jeopardy",
+  "author": {
+    "name": "Ben Drucker",
+    "email": "bvdrucker@gmail.com",
+    "url": "bendrucker.me"
+  },
+  "scripts": {
+    "test": "standard"
+  },
+  "keywords": [
+    "jeopardy",
+    "music",
+    "audio"
+  ],
+  "devDependencies": {
+    "standard": "^7.0.0"
+  },
+  "files": [
+    "index.js",
+    "cli.js",
+    "jeopardy.mp3"
+  ],
+  "dependencies": {
+    "end-of-stream": "~1.1.0",
+    "play-sound": "0.0.9",
+    "spawn-wrapper": "~1.0.0"
+  }
+}
