@@ -4,7 +4,7 @@
   "bin": {
     "jeopardy": "cli.js"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Wrap any shell command to play the Jeopardy theme while it runs",
   "license": "MIT",
   "repository": "bendrucker/jeopardy",
