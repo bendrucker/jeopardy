@@ -1,4 +1,4 @@
-# jeopardy [![Build Status](https://travis-ci.org/bendrucker/jeopardy.svg?branch=master)](https://travis-ci.org/bendrucker/jeopardy)
+# jeopardy [![Build Status](https://travis-ci.org/bendrucker/jeopardy.svg?branch=master)](https://travis-ci.org/bendrucker/jeopardy) [![Greenkeeper badge](https://badges.greenkeeper.io/bendrucker/jeopardy.svg)](https://greenkeeper.io/)
 
 > Wrap any shell command to play the Jeopardy theme while it runs
 
