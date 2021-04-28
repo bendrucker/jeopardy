@@ -16,9 +16,7 @@ const players = {
 
 const findPlayer = function () {
   for (const playerName of Object.keys(players)) {
-    const { code } = shell.exec(`which ${playerName}`, { silent: true })
-
-    if (code === 0) {
+    if (shell.which(playerName)) {
       return players[playerName]
     }
   }
