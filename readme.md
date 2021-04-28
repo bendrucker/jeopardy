@@ -2,7 +2,7 @@
 
 > Wrap any shell command to play the Jeopardy theme while it runs
 
-Currently only works on OS X using `afplay`.
+It works on macOS using `afplay` and Linux if you've got `mplayer`, `mpv` or `vlc` installed.
 
 ## Install
 
