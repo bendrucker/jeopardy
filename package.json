@@ -4,7 +4,7 @@
   "bin": {
     "jeopardy": "cli.js"
   },
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Wrap any shell command to play the Jeopardy theme while it runs",
   "license": "MIT",
   "repository": "bendrucker/jeopardy",
@@ -13,6 +13,12 @@
     "email": "bvdrucker@gmail.com",
     "url": "bendrucker.me"
   },
+  "contributors": [
+    {
+      "name": "Noah Hummel",
+      "email": "strangedev@posteo.net"
+    }
+  ],
   "scripts": {
     "test": "standard"
   },
@@ -31,6 +37,7 @@
   ],
   "dependencies": {
     "end-of-stream": "~1.4.1",
+    "shelljs": "0.8.4",
     "spawn-wrapper": "~1.0.0"
   }
 }
