@@ -4,33 +4,45 @@ const child = require('child_process')
 const eos = require('end-of-stream')
 const wrap = require('spawn-wrapper')
 const path = require('path')
-const shell = require('shelljs')
+const which = require('which')
 const jeopardy = path.resolve(__dirname, 'jeopardy.mp3')
 
-const players = {
-  'afplay': (audioFile) => ['afplay', [ audioFile ]],
-  'mplayer': (audioFile) => ['mplayer', [ audioFile ]],
-  'mpv': (audioFile) => ['mpv', [ '--no-audio-display', audioFile]],
-  'vlc': (audioFile) => ['vlc',[ '-I', 'rc',  audioFile ]]
-}
+const players = [
+  { name: 'afplay', getCommand: (audioFile) => ['afplay', [ audioFile ]] },
+  { name: 'mplayer', getCommand: (audioFile) => ['mplayer', [ audioFile ]] },
+  { name: 'mpv', getCommand: (audioFile) => ['mpv', [ '--no-audio-display', audioFile]] },
+  { name: 'vlc', getCommand: (audioFile) => ['vlc',[ '-I', 'rc',  audioFile ]] }
+]
 
-const findPlayer = function () {
-  for (const playerName of Object.keys(players)) {
-    if (shell.which(playerName)) {
-      return players[playerName]
-    }
+const findPlayer = function (remainingPlayers, callback) {
+  if (remainingPlayers.length < 1) {
+    return callback(
+     new Error('No suitable player was found on your system 🙁 See https://github.com/bendrucker/jeopardy#readme for a list of supported ones.')
+    )
   }
 
-  return () => [ 'echo' ]
+  const { name, getCommand } = remainingPlayers.pop();
+
+  which(name, (err) => {
+    if (!err) {
+      return callback(null, getCommand)
+    }
+    findPlayer(remainingPlayers, callback)
+  });
 }
 
 module.exports = function run (command, args, callback) {
-  const getPlayerCommand = findPlayer()
-  const main = child.spawn(command, args, {
-    stdio: 'inherit'
+  findPlayer(players, (err, getPlayerCommand) => {
+    if (err) {
+      return callback(err)
+    }
+
+    const main = child.spawn(command, args, {
+      stdio: 'inherit'
+    })
+
+    wrap(main, getPlayerCommand(jeopardy))
+
+    eos(main, callback)
   })
-
-  wrap(main, getPlayerCommand(jeopardy))
-
-  eos(main, callback)
 }
