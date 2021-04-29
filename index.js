@@ -21,14 +21,14 @@ const findPlayer = function (remainingPlayers, callback) {
     )
   }
 
-  const { name, getCommand } = remainingPlayers.pop();
+  const { name, getCommand } = remainingPlayers.pop()
 
   which(name, (err) => {
     if (!err) {
       return callback(null, getCommand)
     }
     findPlayer(remainingPlayers, callback)
-  });
+  })
 }
 
 module.exports = function run (command, args, callback) {
