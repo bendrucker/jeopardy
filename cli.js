@@ -10,5 +10,8 @@ if (!input.length) {
 }
 
 run(input[0], input.slice(1), function (err) {
-  if (err) process.exit(1)
+  if (err) {
+    console.error(err)
+    process.exit(1)
+  }
 })

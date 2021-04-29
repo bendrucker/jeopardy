@@ -13,6 +13,12 @@
     "email": "bvdrucker@gmail.com",
     "url": "bendrucker.me"
   },
+  "contributors": [
+    {
+      "name": "Noah Hummel",
+      "email": "strangedev@posteo.net"
+    }
+  ],
   "scripts": {
     "test": "standard"
   },
@@ -31,6 +37,7 @@
   ],
   "dependencies": {
     "end-of-stream": "~1.4.1",
-    "spawn-wrapper": "~1.0.0"
+    "spawn-wrapper": "~1.0.0",
+    "which": "2.0.2"
   }
 }
