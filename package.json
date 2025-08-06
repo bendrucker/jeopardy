@@ -28,7 +28,7 @@
     "audio"
   ],
   "devDependencies": {
-    "standard": "^14.0.0"
+    "standard": "^17.1.2"
   },
   "files": [
     "index.js",
